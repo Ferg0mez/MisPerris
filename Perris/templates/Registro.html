@@ -1,0 +1,12 @@
+{% extends "maqueta.html" %}
+{% load staticfiles %}
+{% block Formulario%}
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <br>
+    <button type="submit">Agregar Usuario</button>
+</form>
+<br>
+<button><a href="{% url 'logout' %}">Salir</a></button>
+{% endblock %}

@@ -1,0 +1,25 @@
+
+{% extends "maqueta.html" %}
+{% load staticfiles %}
+{% block MisPerris %}
+
+<section class="main">
+    <article class="derecha">
+        <h2>Rescate</h2>
+        <h4>Etapa 1</h4>
+        <hr> 
+        <p>Rescatamos perros en situación de peligro y/o abandono. Los rehabilitamos y los preparamos para buscarles un hogar.</p>
+        <br>
+        <img src="{% static 'images/rescate.jpg' %}" width="150" height="100" >			
+    </article>
+    
+    <article class= "izquierda">
+        <img src="{% static 'images/crowfunding.jpg' %}" width="100" >
+        <h2>CrowdFunding</h2>
+        <h4>Financiamiento</h4>
+        <hr>  
+        <p>Sigue nuestras redes sociales para informarte acerca de las diversas campañas y actividades que realizaos para obteer financiamiento para seguir ayudando.</p>
+        <h3> Campañas </h3>
+    </article>
+</section>
+{% endblock %}

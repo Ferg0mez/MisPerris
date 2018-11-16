@@ -1,0 +1,31 @@
+{% extends "maqueta.html" %}
+{% block Lista %}
+<h1 >Lista de Mascotas</h1>
+{% if object_list %}
+<table class="table table-bordered">
+    <tr>
+        <td> Codigo</td><td> Nombre</td><td> Raza</td> <td> Descripcion </td> <td> Estado </td> <td> Foto </td>
+    </tr>
+    {% for m in object_list %}
+    <tr>
+        <td>{{m.idmascota}}</td> <td>{{m.nomascota}}</td> <td>{{m.raza}}</td> <td>{{m.descripcion}}</td> <td>{{m.estado}}</td> <td><img src="/media/{{m.fotografia}}" width="100%" alt=""></td><td> <a class="btn btn-primary" href="{% url 'editarMascota' m.idmascota %}">Editar</a></td><td> <a class="btn btn-danger" href="{% url 'eliminarMascota' m.idmascota %}">Eliminar</a></td>                    
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h2 >No hay Mascotas registradas</h2>
+{% endif %}
+<br>
+<ul class="pager">
+	<li>
+        {% if page_obj.has_previous %}
+        <button><a href="?page={{ page_obj.previous_page_number }}">Anterior</a></button>
+		{% endif %}
+        </li>
+	<li>
+        {% if page_obj.has_next %}
+        <button><a href="?page={{ page_obj.next_page_number }}">Siguiente</a>  </button>
+    	{% endif %}
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Página Muestra</title>
+    <meta name="description" content="Pagina completa con Flexbox"><!--Utilizamos el descriptor en meta para apoyar la busqueda de contenidos en la web-->
+    <meta name="viewport" content="width=device-widtg, user-scalable=no, initial-scale=1.0,maximun-scale=1.0,minimun-scale=1.0"><!--las escalas indican un punto inicial, la escala maxima y minima-->
+    <script src="{% static 'prefix.js' %}" type="test/javascript"></script><!--Script para asegurarq eu en todos los navegadores y dispositivos el sitio se vea igual-->
+    <link rel="stylesheet" href="{% static 'css/jquery.bxslider.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <script src="{% static 'js/jquery.js'%}"></script><!--conectar jq para definir el codigo jq -->
+    <script src="{% static 'js/jquery.bxslider.min.js'%}"></script><!--conectar jq del slider-->
+</head>
+    <body>
+        <div class="contenedor">
+        <header>
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" >
+            </div>
+
+             <div>
+                {% if actual %}
+                    <div class="logo">¡Hola {{actual.username}}!</div>
+                    <button class= "out"><a href="{% url 'logout' %}">Salir</a></button>
+                {%endif%}
+            </div>
+
+            <nav>
+                <a href="{% url 'inicio'%}">Inicio</a>
+                {% if request.user.is_authenticated %} <!-- Solo los usuarios conectados pueden usar estas urls -->
+                <a href="{% url 'gestionarUsuarios'%}"> Usuarios  </a>
+                <a href="{% url 'MascotaNueva'%}">Agregar Mascotas  </a>
+                <a href="{% url 'listaMascota'%}">Lista Mascotas </a>
+                {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'registro' %}">Registro</a>
+                {% endif %}
+                <a href="{% url 'logout' %}">Salir </a>
+                
+                
+            </nav>
+        
+            <!-- Creamos el carrusel -->
+            <div id="carrusel">
+                <div><img src="{% static 'images/Apolo.jpg'%}"></div>
+                <div><img src="{% static 'images/Duque.jpg'%}"></div>
+                <div><img src="{% static 'images/Tom.jpg'%}"></div>
+            </div>
+            
+            <!-- Especifamos los links de las redes sociales -->
+            <section class="logos">
+                <a href="https://es-la.facebook.com/"><img src = "{% static 'images/Facebook.png' %}" width="50"></a>
+                <a href="https://plus.google.com/discover?hl=es"><img src = "{% static 'images/Google-Plus.png' %}" width="50"></a>
+                <a href="https://instagram.com/"><img src = "{% static 'images/Instagram.png' %}" width="50"></a>
+                <a href="#"><img src = "{% static 'images/Mail.png' %}" width="50"></a>
+            </section>
+               
+
+        </header>
+        {% block MisPerris %}
+
+        {% endblock %}
+        <section>
+            <div class="contenedor" style = "background: #63E7A3;">
+               
+                {% block Login%}
+                {% endblock %}
+                <div class="lista">
+                    {% block Lista%}
+                    {% endblock %}
+                </div>
+                <div class="formulario">
+                    {% block Formulario%}
+                    {% endblock %}
+                </div>
+            </div>
+        </section>
+         <footer>
+            <div class="cola">   
+                    <div class="cj">                          
+                        <img src="{% static 'images/uno.jpg' %}" alt="Nueve" >
+                        <img src="{% static 'images/dos.jpg' %}" alt="Nueve">
+                        <img src="{% static 'images/tres.jpg' %}" alt="Nueve">
+                    </div>
+                    <div class="cj">
+                        <img src="{% static 'images/cuatro.jpg' %}" alt="Nueve" style="height:48%"> 
+                        <img src="{% static 'images/cinco.jpg' %}" alt="Nueve" style="height:50%">
+                    </div>
+                    <div class="cj">
+                        <img src="{% static 'images/seis.jpg' %}" alt="Nueve" style="height:58%">
+                        <img src="{% static 'images/siete.jpg' %}" alt="Nueve" style="height:38%">
+                    </div>
+                    
+                </div>      
+        <footer> 
+        </div>
+        <script src="{% static 'js/codigo.js' %}"></script>
+    <script src="{% static 'js/codigo2.js' %}"></script>
+    </body>
+    
+</html>

@@ -1,0 +1,16 @@
+{% extends "maqueta.html" %}
+{% load staticfiles %}
+{% block Lista %}
+<h2 style="padding: 10px; text-align: center;"> Editar Mascota </h2>
+<br>
+{% endblock %}
+{% block Formulario%}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h3>Codigo: {{ object.idmascota }}?</h3>	
+    {{form.as_p}}
+    <br>
+    <button type="submit">Editar Mascota</button>
+</form>
+<br>
+{% endblock %}

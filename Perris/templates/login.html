@@ -1,0 +1,10 @@
+{% extends "maqueta.html" %}
+{% load staticfiles%}
+{% block Login%}
+<h2 style="padding: 10px; text-align: center;"> Login de Usuario </h2>
+<form method="POST">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit" value="Ingresar al Sistema">
+</form>
+{% endblock %}
